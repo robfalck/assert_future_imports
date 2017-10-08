@@ -58,6 +58,12 @@ def assert_future_imports(s, imports=None, excludes=None):
     ----------
     s : str
         A Python file or directory to recursively check for __future__ imports.
+    imports : sequence of str or None
+        A sequence of strings denoting the required imports from __future__.  If None,
+        defaults to ['print_function', 'division', 'absolute_import', 'unicode_literals']
+    excludes : sequence of str or None
+        A sequence of strings denoting filenames to be ignored by the search.  If None, defaults
+        to ['__init__.py']
 
     Returns
     -------
@@ -81,6 +87,9 @@ def assert_future_imports(s, imports=None, excludes=None):
         if not test_set.issubset(_valid_future_imports):
             raise ValueError('Invalid imports from __future__: '
                              '{0}'.format(' ,'.join([i for i in test_set - _valid_future_imports])))
+
+    if excludes is None:
+        excludes = ['__init__.py']
 
     if os.path.isfile(s):
         files = [s]
@@ -114,14 +123,17 @@ def main():
 
     parser = argparse.ArgumentParser(description='Example with long option names')
 
-    parser.add_argument('paths', action='store')
+    parser.add_argument('path', action='store')
     parser.add_argument('--imports', action='store',
                         default='print_function division absolute_import')
-    parser.add_argument('--ignores', action='store', default='__init__.py')
+    parser.add_argument('--ignores', action='store', default='')
 
     args = parser.parse_args()
 
-    print(args)
+    imports = args.imports.split() if args.imports else None
+    excludes = args.excludes.split() if args.excludes else None
+
+    assert_future_imports(args.path, imports=imports, excludes=excludes)
 
 if __name__ == '__main__':
     assert_future_imports('..',
