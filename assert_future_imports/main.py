@@ -126,7 +126,7 @@ def main():
     parser.add_argument('path', action='store')
     parser.add_argument('--imports', action='store',
                         default='print_function division absolute_import')
-    parser.add_argument('--ignores', action='store', default='')
+    parser.add_argument('--excludes', action='store', default='')
 
     args = parser.parse_args()
 
