@@ -109,7 +109,19 @@ def assert_future_imports(s, imports=None, excludes=None):
         raise AssertionError(err_msg)
 
 
+def main():
+    import argparse
 
+    parser = argparse.ArgumentParser(description='Example with long option names')
+
+    parser.add_argument('paths', action='store')
+    parser.add_argument('--imports', action='store',
+                        default='print_function division absolute_import')
+    parser.add_argument('--ignores', action='store', default='__init__.py')
+
+    args = parser.parse_args()
+
+    print(args)
 
 if __name__ == '__main__':
     assert_future_imports('..',

@@ -27,4 +27,11 @@ setup(name='assert_future_imports',
       author_email='robfalck<at>gmail.com',
       url='http://github.com/robfalck/assert_future_imports',
       license='Apache License, Version 2.0',
+      packages=[
+          'assert_future_imports',
+      ],
+      entry_points="""
+      [console_scripts]
+      assert_future_imports=assert_future_imports.main:main
+"""
     )
