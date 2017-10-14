@@ -45,15 +45,17 @@ Running assert_future_imports from within this repo, for instance, will give
 ```
 $ assert_future_imports .
 Traceback (most recent call last):
-  File "/Users/rfalck/anaconda/envs/blue2/bin/assert_future_imports", line 11, in <module>
+  File "./anaconda/envs/blue2/bin/assert_future_imports", line 11, in <module>
     load_entry_point('assert-future-imports==1.0.0', 'console_scripts', 'assert_future_imports')()
-  File "/Users/rfalck/Codes/assert_future_imports.git/assert_future_imports/main.py", line 142, in main
+  File "./Codes/assert_future_imports.git/assert_future_imports/main.py", line 142, in main
     assert_future_imports(args.path, imports=imports, excludes=excludes)
-  File "/Users/rfalck/Codes/assert_future_imports.git/assert_future_imports/main.py", line 118, in assert_future_imports
+  File "./Codes/assert_future_imports.git/assert_future_imports/main.py", line 118, in assert_future_imports
     raise AssertionError(err_msg)
 AssertionError: Files are missing imports from __future__
     ./setup.py: division, print_function, absolute_import
 ```
+
+since the setup.py file does not import anything from __future__.
 
 ## License
 
