@@ -123,10 +123,16 @@ def main():
 
     parser = argparse.ArgumentParser(description='Example with long option names')
 
-    parser.add_argument('path', action='store')
+    parser.add_argument('path', action='store', help='the path to be searched '
+                                                     'for __future__ imports')
     parser.add_argument('--imports', action='store',
-                        default='print_function division absolute_import')
-    parser.add_argument('--excludes', action='store', default='')
+                        default='print_function division absolute_import',
+                        help='Space-delimited sequence of things that must be '
+                             'imported from __future__. Defaults to'
+                             '\'print_function division absolute_import\'')
+    parser.add_argument('--excludes', action='store', default='',
+                        help='Filenames to be ommitted from assertion. \'__init__.py\' might'
+                             ' be a common exclude, for instance.')
 
     args = parser.parse_args()
 
@@ -134,6 +140,7 @@ def main():
     excludes = args.excludes.split() if args.excludes else None
 
     assert_future_imports(args.path, imports=imports, excludes=excludes)
+
 
 if __name__ == '__main__':
     assert_future_imports('..',

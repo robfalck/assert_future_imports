@@ -1,13 +1,8 @@
-
-import os
-import sys
 from distutils.core import setup
 
 setup(name='assert_future_imports',
       version='1.0.0',
       description='Assertion to check that files import appropriately from __future__',
-      long_description="""\
-""",
       classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
