@@ -2,7 +2,7 @@ assert_future_imports
 =====================
 
 assert_future_imports raises an AssertionError if the file in question does not import
-the specified imports from __future__.  This gives developers an some additional assurance that
+the specified imports from __future__.  This gives developers some additional assurance that
 their code will be backwards compatible.
 
 ## Installation
